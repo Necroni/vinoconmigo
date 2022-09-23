@@ -1,0 +1,40 @@
+{
+  "name": "vinoconmigo",
+  "version": "1.0.0",
+  "description": "Wine with Friends",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Necroni/vinoconmigo.git"
+  },
+  "author": "Greg Ley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Necroni/vinoconmigo/issues"
+  },
+  "homepage": "https://github.com/Necroni/vinoconmigo#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.32.0",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-flash": "^0.0.2",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
