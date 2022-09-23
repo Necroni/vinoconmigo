@@ -13,7 +13,7 @@ const connectDB = require("./config/database-conf")  // Mongo is set up - should
 
 // Configs
 require("dotenv").config({ path: "./config/.env" })
-require("./config/passport")(passport)
+require("./config/passport-conf")(passport)
 
 connectDB()
 
@@ -36,11 +36,13 @@ app.use(
         secret: "elemental frogger",
         resave: false,
         saveUninitialized: false,
-        store: MongoStore.create({ mongooseConnection: mongoose.connection }),
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
     })
 )
 
 // Add passport initialization and session
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Flash messages
 app.use(flash())
