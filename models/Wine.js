@@ -1,57 +1,42 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const WineSchema = new mongoose.Schema({
-// Name
-// Vineyard
-// Vintage
-// Type
-// ABV
-// Region
-// Tasting Notes
-// Color
-// Price (750mL)
-// Body
-// Pairings
-// When finished I felt...
-// MyRating
-// Ratings
-// Tags
-// Drink again?
-// Buy at 10
-// Buy at 25
-// Buy at 50
-// Buy at 100
-  
-  
-  
-  title: {
+  wineName: {
     type: String,
     required: true,
   },
-  image: {
+  vineyard: {
     type: String,
-    require: true,
+    required: false,
   },
-  cloudinaryId: {
-    type: String,
-    require: true,
-  },
-  caption: {
-    type: String,
-    required: true,
-  },
-  likes: {
+  vintage: {
     type: Number,
     required: true,
   },
-  user: {
+  type: {
+    type: String,
+    required: true,
+  },
+  abv: {
+    type: Number,
+    required: false,
+  },
+  region: {
+    type: String,
+    required: false,
+  },
+  addedBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+  image: {
+    type: String,
+    required: true,
   },
-});
+  cloudinaryID: {
+    type: String,
+    required: true,
+  }
+})
 
-module.exports = mongoose.model("Wine", PostSchema);
+module.exports = mongoose.model("Wine", WineSchema)

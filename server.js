@@ -8,8 +8,9 @@ const methodOverride = require("method-override")   // Will need this for form/b
 const flash = require("express-flash")  // will need this later for alerts
 const logger = require("morgan")
 const connectDB = require("./config/database-conf")  // Mongo is set up - should connect without issues
-//const mainRoutes = require("./routes/main")     // Routes not set up yet
-//const postRoutes = require("./routes/posts")    // Routes not set up yet
+const mainRoutes = require("./routes/main-routes")
+const wineRoutes = require("./routes/wine-routes")
+const tastingRoutes = require("./routes/tasting-routes")
 
 // Configs
 require("dotenv").config({ path: "./config/.env" })
@@ -18,9 +19,9 @@ require("./config/passport-conf")(passport)
 // Connect to database
 connectDB()
 
-// Add:
-// EJS
-// static public folder
+// EJS and public folder
+app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 // Do I need body parsing? Still not sure
 app.use(express.urlencoded({ extended: true }))
@@ -51,7 +52,10 @@ app.use(passport.session())
 // Flash messages
 app.use(flash())
 
-// Add: Routes for main and post
+// Add: Routes for main, wine, and tasting
+app.use("/", mainRoutes)
+app.use("/wine", wineRoutes)
+app.use("/tasting", tastingRoutes)
 
 // Server ready to ROCK?
 app.listen(process.env.PORT, () => {
