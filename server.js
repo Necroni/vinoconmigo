@@ -36,7 +36,9 @@ app.use(
         secret: "elemental frogger",
         resave: false,
         saveUninitialized: false,
-        store: new MongoStore({ mongooseConnection: mongoose.connection }),
+        store: MongoStore.create({ 
+            mongoUrl: process.env.DB_STRING
+         }),
     })
 )
 
@@ -51,5 +53,5 @@ app.use(flash())
 
 // Server ready to ROCK?
 app.listen(process.env.PORT, () => {
-    console.log(`Server ready to ROCK on port ${PORT}`)
+    console.log(`Server ready to ROCK on port ${process.env.PORT}`)
 })
