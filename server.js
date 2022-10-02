@@ -15,6 +15,7 @@ const connectDB = require("./config/database-conf")  // Mongo is set up - should
 require("dotenv").config({ path: "./config/.env" })
 require("./config/passport-conf")(passport)
 
+// Connect to database
 connectDB()
 
 // Add:
@@ -28,7 +29,8 @@ app.use(express.json())
 // Logs
 app.use(logger("dev"))
 
-// Add: methodOverride
+// methodOverride to allow puts/deletes
+app.use(methodOverride("_method"))
 
 // Sessions stored in Mongo
 app.use(
