@@ -4,12 +4,12 @@ const upload = require("../middleware/multer");
 const wineController = require("../controllers/wine-cont");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.get("/:id", ensureAuth, wineController.getPost);
+router.get("/:id", ensureAuth, wineController.getWine);
 
-router.post("/createPost", upload.single("file"), wineController.createPost);
+router.post("/createWine", upload.single("file"), wineController.createWine);
 
-router.put("/likePost/:id", wineController.likePost);
+// router.put("/likeWine/:id", wineController.likeWine);
 
-router.delete("/deletePost/:id", wineController.deletePost);
+router.delete("/deleteWine/:id", wineController.deleteWine);
 
 module.exports = router;

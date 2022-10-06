@@ -4,12 +4,10 @@ const upload = require("../middleware/multer");
 const tastingController = require("../controllers/tasting-cont");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-router.get("/:id", ensureAuth, tasting.getPost);
+router.get("/:id", ensureAuth, tastingController.getTasting);
 
-router.post("/createPost", upload.single("file"), tastingController.createPost);
+router.post("/createTasting", upload.single("file"), tastingController.createTasting);
 
-router.put("/likePost/:id", tastingController.likePost);
-
-router.delete("/deletePost/:id", tastingController.deletePost);
+router.delete("/deleteTasting/:id", tastingController.deleteTasting);
 
 module.exports = router;

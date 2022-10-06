@@ -36,7 +36,11 @@ const WineSchema = new mongoose.Schema({
   cloudinaryID: {
     type: String,
     required: true,
-  }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 })
 
 module.exports = mongoose.model("Wine", WineSchema)
