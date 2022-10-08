@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Tasting = require("../models/Tasting");
+const { getRandomString } = require("../config/wordlist");
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -27,14 +28,14 @@ module.exports = {
     }
   },
   createTasting: async (req, res) => {
-    try {
 
+    try {
       await Tasting.create({
         title: req.body.title,
-        humanId: "test",
+        humanId: getRandomString(),
         creatorId: req.user.id,
         tastingDate: req.body.date,
-        createdAt: Date.now,
+        createdAt: Date.now(),
         wines: [],
         participants: [req.user.id], 
       });

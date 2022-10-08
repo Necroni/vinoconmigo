@@ -9,18 +9,14 @@
             </div>
             <div>
                 <h2>Start a new tasting</h2>
-                <form action="/post/createTasting" enctype="multipart/form-data" method="POST">
+                <form action="/tasting/createTasting" enctype="application/x-www-form-urlencoded" method="POST">
                 <div>
-                    <label for="title">Title</label>
+                    <label for="title">Name your Tasting session</label>
                     <input type="text" id="title" name="title">
                 </div>
                 <div>
-                    <label for="caption">Caption</label>
-                    <textarea class="form-control" id="caption" name="caption"></textarea>
-                </div>
-                <div>
-                    <label for="imgUpload">Image</label>
-                    <input type="file" id="imageUpload" name="file">
+                    <label for="date">Date of session</label>
+                    <input type="date" id="date" name="date">
                 </div>
                 <button type="submit" value="Upload">Submit</button>
                 </form>

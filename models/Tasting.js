@@ -15,11 +15,11 @@ const TastingSchema = new mongoose.Schema({
   },
   tastingDate: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   wines: {
     type: Array,
