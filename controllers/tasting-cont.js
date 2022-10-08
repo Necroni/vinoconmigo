@@ -28,16 +28,15 @@ module.exports = {
   },
   createTasting: async (req, res) => {
     try {
-      // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
 
       await Tasting.create({
         title: req.body.title,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
-        caption: req.body.caption,
-        likes: 0,
-        user: req.user.id,
+        humanId: "test",
+        creatorId: req.user.id,
+        tastingDate: req.body.date,
+        createdAt: Date.now,
+        wines: [],
+        participants: [req.user.id], 
       });
       console.log("Tasting has been added!");
       res.redirect("/profile");
@@ -45,6 +44,25 @@ module.exports = {
       console.log(err);
     }
   },
+  // createTasting: async (req, res) => {
+  //   try {
+  //     // Upload image to cloudinary
+  //     const result = await cloudinary.uploader.upload(req.file.path);
+
+  //     await Tasting.create({
+  //       title: req.body.title,
+  //       image: result.secure_url,
+  //       cloudinaryId: result.public_id,
+  //       caption: req.body.caption,
+  //       likes: 0,
+  //       user: req.user.id,
+  //     });
+  //     console.log("Tasting has been added!");
+  //     res.redirect("/profile");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
   likeTasting: async (req, res) => {
     try {
       await Tasting.findOneAndUpdate(

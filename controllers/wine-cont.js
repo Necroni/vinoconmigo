@@ -2,14 +2,6 @@ const cloudinary = require("../middleware/cloudinary")
 const Wine = require("../models/Wine")
 
 module.exports = {
-  getProfile: async (req, res) => {
-    try {
-      const wines = await Wine.find({ user: req.user.id })
-      res.render("profile.ejs", { wines: wines, user: req.user })
-    } catch (err) {
-      console.log(err)
-    }
-  },
   getFeed: async (req, res) => {
     try {
       const wines = await Wine.find().sort({ createdAt: "desc" }).lean()

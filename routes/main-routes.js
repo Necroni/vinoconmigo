@@ -7,7 +7,7 @@ const tastingController = require("../controllers/tasting-cont")
 const { ensureAuth, ensureGuest } = require("../middleware/auth")
 
 router.get("/", homeController.getIndex);
-router.get("/profile", ensureAuth, wineController.getProfile);
+router.get("/profile", ensureAuth, tastingController.getProfile);
 router.get("/feed", ensureAuth, wineController.getFeed);
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);

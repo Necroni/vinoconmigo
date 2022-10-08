@@ -5,30 +5,30 @@ const TastingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  image: {
-    type: String,
-    require: true,
-  },
-  cloudinaryId: {
-    type: String,
-    require: true,
-  },
-  caption: {
+  humanId: {
     type: String,
     required: true,
   },
-  likes: {
-    type: Number,
-    required: true,
-  },
-  user: {
+  creatorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+  tastingDate: {
+    type: Date,
+    default: Date.now,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  wines: {
+    type: Array,
+    required: false,
+  },
+  participants: {
+    type: Array,
+    required: false,
+  }
 });
 
 module.exports = mongoose.model("Tasting", TastingSchema);
